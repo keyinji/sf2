@@ -14,18 +14,18 @@ while True:
         stream_no = int(input("Which stream? "))      
         percentage = float(input("%? "))   
         
-        ratio = percentage / 100.0
-        old_flow = flows[stream_no - 1]  
+        ratio = percentage/100
+        old_flow = flows[stream_no-1]  
         
         left_flow = old_flow * ratio
         right_flow = old_flow - left_flow
         
-        flows[stream_no - 1] = left_flow
+        flows[stream_no-1] = left_flow
         flows.insert(stream_no, right_flow)
     
     elif no == 88:
         stream_no = int(input("Which stream? "))
-        flows[stream_no - 1] = flows[stream_no - 1] + flows[stream_no]
+        flows[stream_no-1] = flows[stream_no-1] + flows[stream_no]
         del flows[stream_no]
         
 final_flows = [int(round(f)) for f in flows]
