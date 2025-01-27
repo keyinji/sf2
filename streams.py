@@ -29,4 +29,7 @@ while True:
         del flows[stream_no]
         
 final_flows = [int(round(f)) for f in flows]
-print(final_flows)
+answer = ''
+for i in final_flows:
+    answer = answer + str(flow) + ' '
+print(answer)
