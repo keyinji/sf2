@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Heavy-Lift Glider - Side View</title>
+</head>
+<body>
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="600" height="300" fill="#ffffff" />
+
+  <!-- Ramp (angled upward) -->
+  <g transform="translate(50,220) rotate(-10)">
+    <rect x="0" y="0" width="400" height="10" fill="#cccccc" />
+  </g>
+
+  <!-- Aircraft Side View -->
+  <!-- Nose Turbine (circle + small blades) -->
+  <circle cx="100" cy="150" r="15" fill="#999999" stroke="#333" stroke-width="2" />
+  <!-- Indicate turbine blades -->
+  <line x1="100" y1="135" x2="100" y2="165" stroke="#333" stroke-width="2"/>
+  <line x1="85" y1="150" x2="115" y2="150" stroke="#333" stroke-width="2"/>
+
+  <!-- Fuselage (long rectangle + slight angled top) -->
+  <polygon points="115,145 260,140 280,150 260,160 115,155"
+           fill="#c0c0c0" stroke="#444" stroke-width="2"/>
+
+  <!-- Propeller behind turbine (rectangle indicating prop) -->
+  <rect x="105" y="147" width="5" height="6" fill="#666" transform="rotate(0,108,150)"/>
+
+  <!-- Wing (side profile) -->
+  <polygon points="150,130 270,135 270,155 150,160"
+           fill="#b3d9ff" stroke="#444" stroke-width="2"/>
+
+  <!-- Tail (horizontal stabilizer + vertical fin) -->
+  <polygon points="260,145 295,142 295,148 260,155"
+           fill="#b3d9ff" stroke="#444" stroke-width="2"/>
+  <rect x="280" y="134" width="8" height="22" fill="#b3d9ff" stroke="#444" stroke-width="2"/>
+
+  <!-- Labels -->
+  <text x="60" y="100" fill="#000000" font-size="14">Fan Airflow →</text>
+  <text x="110" y="185" fill="#000000" font-size="12">Nose Turbine</text>
+  <text x="200" y="135" fill="#000000" font-size="12">Wing</text>
+  <text x="280" y="170" fill="#000000" font-size="12">Tail</text>
+  <text x="90" y="235" fill="#000000" font-size="12">Upward Ramp</text>
+</svg>
+</body>
+</html>
