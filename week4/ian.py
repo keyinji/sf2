@@ -9,7 +9,7 @@ d = lst1[2]
 
 laundry = 0
 
-if m > 1:
+if m > 0:
     lst2 = input("Input 2: ").split()
 
     for i in range(len(lst2)):
@@ -27,7 +27,8 @@ for i in range(1, d+1):
     if i in lst2:
         total += 1
         n += 1
-    n -= 1
+    if n> 0:
+        n-=1
 
 print(laundry)
 
