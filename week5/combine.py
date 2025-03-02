@@ -7,14 +7,12 @@ def combine(d1, d2):
     new_dict={}
     for key in d1:
         if key in d2:
-            lst_d1 = d1[key]
-            lst_d2 = d2[key]
-            new_dict[key] = sum(lst_d1) + sum(lst_d2)
+            new_dict[key] = sum(d1[key]) + sum(d2[key])
     return new_dict
-
+  
 
 
 d1 = {1: [2], 4: [5,6]}
 d2 = {4: [8]}
 
-new_dict = {4: 19}
+print(combine(d1, d2))
