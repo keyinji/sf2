@@ -51,4 +51,4 @@ def inverse(d):
     
     return new_d
 
-print(inverse({3: 5, 4: 6, 7:9}))
+print(inverse({3: 5, 4: 5, 7:9}))
