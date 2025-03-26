@@ -28,9 +28,9 @@ exam1_grades = [grades_dict[key][0] for key in grades_dict]
 exam2_grades = [grades_dict[key][1] for key in grades_dict]
 exam3_grades = [grades_dict[key][2] for key in grades_dict]
 
-print(f"Exam 1 - min: {min(exam1_grades)}, max: {max(exam1_grades)}, avg: {sum(exam1_grades)/len(exam1_grades)}")
-print(f"Exam 2 - min: {min(exam2_grades)}, max: {max(exam2_grades)}, avg: {sum(exam2_grades)/len(exam2_grades)}")
-print(f"Exam 3 - min: {min(exam3_grades)}, max: {max(exam3_grades)}, avg: {sum(exam3_grades)/len(exam3_grades)}")
+print(f"min: {min(exam1_grades)}, max: {max(exam1_grades)}, avg: {sum(exam1_grades)/len(exam1_grades)}")
+print(f"min: {min(exam2_grades)}, max: {max(exam2_grades)}, avg: {sum(exam2_grades)/len(exam2_grades)}")
+print(f"min: {min(exam3_grades)}, max: {max(exam3_grades)}, avg: {sum(exam3_grades)/len(exam3_grades)}")
 
 all_averages = [sum(grades_dict[key])/len(grades_dict[key]) for key in grades_dict]
 overall_avg = sum(all_averages) / len(all_averages)
