@@ -1,4 +1,21 @@
-str(100)+ "Jones"+  str(24.98)
-str(100)+ "Jones"+  str(24.98)
-str(100)+ "Jones"+  str(24.98)
-str(100)+ "Jones"+  str(24.98)
+100 Jones  35
+98 eva 454
+89 ewe 7678
+90 ers 89
+103 jake 89
+
+#* Question 1
+'''
+From your accounts.txt file (from last class) read each line and create 
+a dictionary of dictionaries.  The outer dictionary key is the account 
+number.  The inner dictionary key is the last name and the value in 
+the inner dictionary is the balance.  Print the final dictionary.  
+'''
+*\
+
+
+
+
+
+
+

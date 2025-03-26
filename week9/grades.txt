@@ -1,0 +1,10 @@
+james, lee, 97, 35, 60
+eva, plum, 87, 90, 98
+pus, j, 89, 91, 94
+john, doe, 78, 89, 90
+felx, pl, 98, 53, 67
+evan, luo, 98, 95, 76
+ple, ok, 78, 76, 54
+jae, k, 89, 81, 56
+po, ok, 82, 23, 83
+we, plc, 91, 95, 91
