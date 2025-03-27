@@ -9,14 +9,14 @@
 
 
 grades_dict = {}
-with open('grades.txt', 'r') as file:
-    for line in file:
-        parts = line.split(",")
-        fn, ln = parts[0], parts[1]
-        grades = parts[2:]
-        grades = list(map(str.rstrip, grades))
-        grades = [int(x) for x in grades]
-        grades_dict[(fn, ln)] = grades
+file = open('grades.txt', 'r')
+for line in file:
+    parts = line.split(",")
+    fn, ln = parts[0], parts[1]
+    grades = parts[2:]
+    grades = list(map(str.rstrip, grades))
+    grades = [int(x) for x in grades]
+    grades_dict[(fn, ln)] = grades
 print(grades_dict)
 
 
