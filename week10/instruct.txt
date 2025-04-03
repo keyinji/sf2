@@ -1,0 +1,14 @@
+1. count number of works
+2. mke 2 files cats.txt, and dogs.txt, store three names cats in first file and three names of dogs in the second file, write a program, 
+that reads tjese filesand print the contents of the file to the screen 
+wrap code in try-except block to catch FileNotFoundError
+
+3. 
+modify your previous code to failt silently if file missingb
+
+
+4. one ommon problem when prompying for numberical input when probiding text instrad of numbers, in sich a case whe ntrying to 
+convrt the unput for int a valueError occurs write program that prompts for 2 number add them tgt and print ther result. 
+Catch Value Error ig inpuy value is not a number and print friendly message, test program by enterning 2 numbers and then b
+by entetring instead of a number. 
+
