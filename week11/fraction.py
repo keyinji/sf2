@@ -12,20 +12,16 @@ class Fraction:
         self.num = num
         self.denom = denom
         
-        # Reduce fraction to lowest terms
         if self.num != 0:
-            # Find GCD using Euclidean algorithm
             a, b = abs(int(self.num)), abs(int(self.denom))
             while b:
                 a, b = b, a % b
             gcd = a
             
-            # Apply reduction if GCD > 1
             if gcd > 1:
                 self.num = int(self.num / gcd)
                 self.denom = int(self.denom / gcd)
         else:
-            # If numerator is 0, set denominator to 1
             self.denom = 1
 
     def __repr__(self):
