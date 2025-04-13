@@ -47,8 +47,6 @@ class Fraction:
     def __ne__(self, other):
         return not self.__eq__(other)
 
-
-# Main program
 f1 = Fraction(10, 14)
 f2 = Fraction(-3, -4)
 print(f1)
