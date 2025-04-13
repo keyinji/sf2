@@ -1,0 +1,8 @@
+QUESTION: Exceptions
+
+What is the purpose of the `finally` block in Python exception handling?
+
+A) It executes only if an exception occurs.  
+B) It executes only if no exception occurs.  
+C) It executes only when a specific exception is raised.  
+D) It always executes, regardless of whether an exception occurs or not.
