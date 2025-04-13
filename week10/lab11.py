@@ -1,0 +1,112 @@
+from urllib.request import urlopen
+
+def readFileURLString(url):
+    try:
+        data = urlopen(url)
+        html_data = data.read()
+        encoding = data.headers.get_content_charset('utf-8')
+        return html_data.decode(encoding)
+    except Exception as e:
+        print(f"Error reading URL {url}: {e}")
+        return None
+
+# Selected 5 books (4 to process, 1 to note)
+books = {
+    "Alice in Wonderland": "https://www.gutenberg.org/cache/epub/11/pg11.txt",
+    "Pride and Prejudice": "https://www.gutenberg.org/cache/epub/1342/pg1342.txt",
+    "Moby Dick": "https://www.gutenberg.org/cache/epub/2701/pg2701.txt",
+    "Treasure Island": "https://www.gutenberg.org/cache/epub/120/pg120.txt",
+    "Fifth Book (Not Processed)": "https://www.gutenberg.org/cache/epub/1661/pg1661.txt"
+}
+
+for title, url in list(books.items())[:4]:
+    try:
+        content = readFileURLString(url)
+        if not content:
+            continue
+            
+        start_marker = "*** START OF THE PROJECT GUTENBERG EBOOK"
+        end_marker = "*** END OF THE PROJECT GUTENBERG EBOOK"
+        start_idx = content.find(start_marker) + len(start_marker)
+        end_idx = content.find(end_marker)
+        story = content[start_idx:end_idx].strip()
+
+        # Write to file
+        filename = title.lower().replace(' ', '_') + '.txt'
+        f = open(filename, 'w', encoding='utf-8')
+        f.write(story)
+        f.close()
+
+        # Word count and frequency
+        words = []
+        current_word = ''
+        for char in story.lower():
+            if char.isalpha():
+                current_word += char
+            elif current_word:
+                words.append(current_word)
+                current_word = ''
+        if current_word:
+            words.append(current_word)
+        
+        word_count = len(words)
+        word_freq = {}
+        for word in words:
+            if word in word_freq:
+                word_freq[word] = word_freq[word] + 1
+            else:
+                word_freq[word] = 1
+
+        # Paragraphs (double newline)
+        paragraphs = len([p for p in story.split('\n\n') if p.strip()])
+        
+        # Sentences (counting .!? followed by space or newline)
+        sentences = 0
+        for i in range(len(story)-1):
+            if story[i] in '.!?' and (story[i+1].isspace() or story[i+1] == '\n'):
+                sentences += 1
+
+        # Word lengths
+        min_length = len(words[0])
+        max_length = len(words[0])
+        total_length = 0
+        for word in words:
+            length = len(word)
+            total_length += length
+            if length < min_length:
+                min_length = length
+            if length > max_length:
+                max_length = length
+        avg_length = total_length / len(words) if words else 0
+
+        # Most common vowel
+        vowels = {'a': 0, 'e': 0, 'i': 0, 'o': 0, 'u': 0}
+        for char in story.lower():
+            if char in vowels:
+                vowels[char] += 1
+        most_common_vowel = 'a'
+        max_count = vowels['a']
+        for v in 'eiou':
+            if vowels[v] > max_count:
+                max_count = vowels[v]
+                most_common_vowel = v
+
+        # Punctuation per 100 sentences
+        punctuation = 0
+        for char in story:
+            if char in '.,!?;:"\'-':
+                punctuation += 1
+        punct_per_100 = (punctuation * 100 / sentences) if sentences > 0 else 0
+
+        print(f"\nAnalysis for {title}:")
+        print(f"Word count: {word_count}")
+        print(f"Paragraphs: {paragraphs}")
+        print(f"Sentences: {sentences}")
+        print(f"Word length - Min: {min_length}, Max: {max_length}, Avg: {avg_length:.2f}")
+        print(f"Most common vowel: {most_common_vowel}")
+        print(f"Punctuation marks per 100 sentences: {punct_per_100:.2f}")
+
+    except Exception as e:
+        print(f"Error processing {title}: {e}")
+
+print("\nNote: Fifth book was selected but not processed.")
