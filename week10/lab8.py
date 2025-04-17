@@ -55,7 +55,7 @@ for title, url in list(books.items())[:4]:
             else:
                 word_freq[word] = 1
 
-        # Paragraph counting
+        # Improved paragraph counting
         paragraphs = 0
         lines = story.split('\n')
         prev_line_empty = True
@@ -72,7 +72,7 @@ for title, url in list(books.items())[:4]:
         for i in range(len(story)-1):
             if story[i] in '.!?' and (story[i+1].isspace() or story[i+1] == '\n'):
                 sentences += 1
-        if story and story[-1] in '.!?':
+        if story and story[-1] in '.!?':  # Count final sentence
             sentences += 1
 
         # Word lengths
@@ -100,17 +100,12 @@ for title, url in list(books.items())[:4]:
                 max_count = vowels[v]
                 most_common_vowel = v
 
-        # Most common punctuation mark
-        punctuation = {'.': 0, ',': 0, '!': 0, '?': 0, ';': 0, ':': 0, '"': 0, "'": 0, '-': 0}
+        # Punctuation per 100 sentences
+        punctuation = 0
         for char in story:
-            if char in punctuation:
-                punctuation[char] += 1
-        most_common_punct = '.'
-        max_punct_count = punctuation['.']
-        for p in ',!?;:"\'-':
-            if punctuation[p] > max_punct_count:
-                max_punct_count = punctuation[p]
-                most_common_punct = p
+            if char in '.,!?;:"\'-':
+                punctuation += 1
+        punct_per_100 = (punctuation * 100 / sentences) if sentences > 0 else 0
 
         print(f"\nAnalysis for {title}:")
         print(f"Word count: {word_count}")
@@ -118,7 +113,7 @@ for title, url in list(books.items())[:4]:
         print(f"Sentences: {sentences}")
         print(f"Word length - Min: {min_length}, Max: {max_length}, Avg: {avg_length:.2f}")
         print(f"Most common vowel: {most_common_vowel}")
-        print(f"Most common punctuation mark: {most_common_punct}")
+        print(f"Punctuation marks per 100 sentences: {punct_per_100:.2f}")
 
     except Exception as e:
         print(f"Error processing {title}: {e}")

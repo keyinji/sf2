@@ -29,7 +29,7 @@ what is the average isage of punction makrks for every 100 sentences \
 
 
 
-
+QUestion 2
 Open your story file from class for reading.
 (a) Print the story (only the story) for the user to read
 (b) Count the total number of words in the story
@@ -75,12 +75,12 @@ Open your story file from class for reading.
 # '''
 
 # Question 5
-'''
-Using the json module to read the grades.json file created in the previous
-question.  Display the data in tabular format, including an additional 
-column showing each student's average to the right of the student's three
-exam grades and an additional row showing the class average on each exam.  
-'''
+# '''
+# Using the json module to read the grades.json file created in the previous
+# question.  Display the data in tabular format, including an additional 
+# column showing each student's average to the right of the student's three
+# exam grades and an additional row showing the class average on each exam.  
+# '''
 
 
 #Question 2
@@ -148,3 +148,25 @@ gradebook = {
 
 with open('grades.json', 'w') as file:
     json.dump(gradebook, file)
+
+import json
+
+with open('grades.json', 'r') as file:
+    gradebook = json.load(file)
+
+students = gradebook['students']
+
+print(f"{'First Name':<12} {'Last Name':<12} {'Exam 1':<8} {'Exam 2':<8} {'Exam 3':<8} {'Average':<8}")
+print("-" * 56)
+
+for student in students:
+    avg = (student['exam1'] + student['exam2'] + student['exam3']) / 3
+    print(f"{student['first_name']:<12} {student['last_name']:<12} {student['exam1']:<8} {student['exam2']:<8} {student['exam3']:<8} {avg:<8.2f}")
+
+class_avg1 = sum(student['exam1'] for student in students) / len(students)
+class_avg2 = sum(student['exam2'] for student in students) / len(students)
+class_avg3 = sum(student['exam3'] for student in students) / len(students)
+
+print("-" * 56)
+
+print(f"{'Class Avg':<24} {class_avg1:<8.2f} {class_avg2:<8.2f} {class_avg3:<8.2f}")
