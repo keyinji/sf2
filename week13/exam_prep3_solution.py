@@ -1,6 +1,5 @@
 """
 Solution
-Topic: Recursion & Time/Space Complexity
 """
 
 def sum_list(lst):
@@ -11,11 +10,8 @@ def sum_list(lst):
 
 
 """
-Time Complexity Analysis:
-
 Time Complexity: O(n)
-- The length of the list is n
-- Each recursive call does constant time operations (accessing element at index 0)
-- Therefore, overall time complexity is O(n)
-
+The length of the list is n.
+Each recursive call does constant time operation (accessing element at index 0)
+Therefore, time complexity is O(n)
 """ 
